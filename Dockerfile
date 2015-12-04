@@ -14,4 +14,4 @@ RUN go install github.com/josephspurrier/godockertest
 ENTRYPOINT /go/bin/godockertest
 
 # Document that the service listens on port 8080.
-EXPOSE 8080
+EXPOSE 80
