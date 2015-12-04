@@ -11,5 +11,5 @@ RUN go install github.com/josephspurrier/godockertest
 # Run the app by default when the container starts.
 ENTRYPOINT /go/bin/godockertest
 
-# Document that the service listens on port 8080.
-EXPOSE 8080
+# Document that the service listens on port 80.
+EXPOSE 80
