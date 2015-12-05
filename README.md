@@ -9,7 +9,7 @@ git clone https://github.com/josephspurrier/godockertest
 sh ./godockertest/scripts/setup.sh
 ```
 
-## Logout and then back in so Docker can be run without root
+Logout and then back in so Docker can be run without root.
 
 ## Clean and build the app (rerun this command to rebuild each time)
 ```
