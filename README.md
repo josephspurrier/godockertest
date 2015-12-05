@@ -3,31 +3,17 @@
 This is just a simple test of using build constraints to differentiate Golang builds on Windows and Linux using docker to test.
 These are the steps to run the Golang web application.
 
-## Setup the server
-```
-sudo apt-key adv --keyserver hkp://p80.pool.sks-keyservers.net:80 --recv-keys 58118E89F3A912897C070ADBF76221572C52609D
-echo "deb https://apt.dockerproject.org/repo ubuntu-trusty main" | sudo tee /etc/apt/sources.list.d/docker.list
-sudo apt-get update
-sudo apt-get -y install linux-image-extra-$(uname -r)
-sudo apt-get -y install docker-engine
-sudo usermod -aG docker ubuntu
-```
-
-## Logout and then login to get access to Docker with having to use sudo
+## Download the repository and update the server
 ```
 git clone https://github.com/josephspurrier/godockertest
-docker build -t godockertest ./godockertest
-docker run -i -t -p 80:80 godockertest
+sh ./godockertest/scripts/setup.sh
 ```
 
-## Rebuild from latest GitHub
+## Logout and then back in so Docker can be run without root
+
+## Clean and build the app (rerun this command to rebuild each time)
 ```
-sudo rm -r godockertest
-docker rm -v $(docker ps -a -q -f status=exited)
-docker rmi $(docker images -f "dangling=true" -q)
-git clone https://github.com/josephspurrier/godockertest
-docker build -t godockertest ./godockertest
-docker run -i -t -p 80:80 godockertest
+sh ./godockertest/scripts/build.sh
 ```
 
 You can now view the website through the public IP of the AWS EC2 instance.
